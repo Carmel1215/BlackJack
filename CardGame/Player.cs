@@ -33,16 +33,19 @@ public class Player : Person
             switch (card.Value)
             {
                 case 1:
-                    sb.Append("Ace");
+                    sb.Append("Ace (1)");
                     break;
                 case 11:
-                    sb.Append("J");
+                    sb.Append("J (11)");
                     break;
                 case 12:
-                    sb.Append("Q");
+                    sb.Append("Q (12)");
                     break;
                 case 13:
-                    sb.Append("K");
+                    sb.Append("K (13)");
+                    break;
+                default:
+                    sb.Append(card.Value);
                     break;
             }
             sb.Append(" ]");
