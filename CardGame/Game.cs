@@ -2,6 +2,7 @@ namespace CardGame;
 
 public class Game
 {
+    // 게임 메인 로직
     public void Run()
     {
         while (true)
@@ -27,7 +28,7 @@ public class Game
                 {
                     player.ownCards.Add(player.Hit(deck));
 
-                    // 패의 총합이 21인지 검사
+                    // 플레이어의 패의 총합이 21인지 검사
                     if (InspectBlackJack(player))
                     {
                         isPlayerWin = true;
@@ -43,11 +44,13 @@ public class Game
                     while (isContinue)
                     {
                         isContinue = dealer.Think(deck); // Hit or Stay 생각 및 행동 함수
+
+                        // 딜러의 패의 총합이 21인지 검사
                         if (InspectBlackJack(dealer))
                         {
                             isPlayerWin = false;
                             break;
-                        } else if (InspectOver(dealer))
+                        } else if (InspectOver(dealer)) // 패의 총합이 21 초과인지 검사
                         {
                             isPlayerWin = true;
                             break;
@@ -57,8 +60,8 @@ public class Game
                 }
             }
 
-            int playerSum = 0;
-            int dealerSum = 0;
+            int playerSum = 0; // 플레이어 패의 숫자 총합
+            int dealerSum = 0; // 딜러 패의 숫자 총합
 
             foreach (Card card in player.ownCards)
             {
@@ -77,6 +80,13 @@ public class Game
             } else if (InspectOver(dealer) != true && playerSum < dealerSum)
             {
                 isPlayerWin = false;
+            } else if (InspectOver(player) != true && InspectOver(dealer) != true && playerSum == dealerSum)
+            {
+                Console.WriteLine(playerSum);
+                Console.WriteLine(dealerSum);
+                Console.WriteLine("[ Debug ] 무승부!");
+                Console.ReadKey(true);
+                continue;
             }
 
             if (isPlayerWin)
