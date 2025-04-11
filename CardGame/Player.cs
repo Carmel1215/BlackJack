@@ -29,7 +29,22 @@ public class Player : Person
             }
 
             sb.Append(' ');
-            sb.Append(card.Value); // TODO: 여기 1, 11, 12, 13 감지해서 그에 맞는 문자열 처리해야함
+
+            switch (card.Value)
+            {
+                case 1:
+                    sb.Append("Ace");
+                    break;
+                case 11:
+                    sb.Append("J");
+                    break;
+                case 12:
+                    sb.Append("Q");
+                    break;
+                case 13:
+                    sb.Append("K");
+                    break;
+            }
             sb.Append(" ]");
             Console.WriteLine(sb.ToString());
         }

@@ -70,8 +70,7 @@ public class Game
                 dealerSum += card.Value;
             }
 
-            // TODO: 승패 판단 로직 구현 (우선순위)
-
+            // 승패 판단
             if (InspectOver(player) != true && playerSum > dealerSum)
             {
                 isPlayerWin = true;
@@ -82,7 +81,7 @@ public class Game
 
             if (isPlayerWin)
             {
-                // TODO: 플레이어 승리
+                // 플레이어 승리
                 Console.WriteLine(playerSum);
                 Console.WriteLine(dealerSum);
                 Console.WriteLine("[ Debug ] 플레이어 승리!");
@@ -90,7 +89,7 @@ public class Game
             }
             else
             {
-                // TODO: 딜러 승리
+                // 딜러 승리
                 Console.WriteLine(playerSum);
                 Console.WriteLine(dealerSum);
                 Console.WriteLine("[ Debug ] 딜러 승리!");
